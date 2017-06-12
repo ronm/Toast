@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
+html, body {margin:0;padding:0;}
+article { margin: 0 auto; max-width: 1000px; padding: 2rem;}
+
+
+/* messages */
+.toast-container { 
+    bottom: 1rem;
+    color: #eee;
+    max-width: calc(100vw - 1.5rem);    
+    position: fixed;
+    right: 1rem;
+    width: 37.5rem;
+}
+
+.toast-container .toast {
+	animation-name: showToast;
+	animation-duration: .5s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+    background: rgba(0,0,0,.9);
+    clear: both;
+    cursor: pointer;
+    float: right;
+    opacity: 0;
+    padding: 1rem;    
+}
+
+.toast-container .toast.hide {
+	animation-name: hideToast;
+	animation-duration: .3s;	
+}
+
+@keyframes showToast {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	
+    to {
+	    opacity: 1;
+	    transform: translateY(0);
+	}
+}
+
+@keyframes hideToast {
+    from {
+	    opacity: 1;
+	    transform: translateY(0);
+	}
+	to {
+	    opacity: 0;
+	    transform: translateY(100%);
+	}	
+}
+</style>
+</head>
+<body>
+
+<article>
+	<button id="show-toast">Show Toast Message</button>
+</article>
+
+<script type="text/javascript" src="toast.js"></script>
+<script type="text/javascript">
+(function() {
+
+	var toast = new Toast();
+
+	document.querySelector("#show-toast").addEventListener("click", function() {
+		toast.create('Hello World ' + window.performance.now()).show();
+	});	
+
+})();</script>
+</body>
+</html>

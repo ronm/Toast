@@ -1,0 +1,50 @@
+/* messages */
+.toast-container { 
+    bottom: 1rem;
+    color: #eee;
+    max-width: calc(100vw - 1.5rem);    
+    position: fixed;
+    right: 1rem;
+    width: 37.5rem;
+
+	.toast {
+		animation-name: showToast;
+		animation-duration: .5s;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+	    background: rgba(0,0,0,.9);
+	    clear: both;
+	    cursor: pointer;
+	    float: right;
+	    opacity: 0;
+	    padding: 1rem;    
+	
+		&.hide {
+			animation-name: hideToast;
+			animation-duration: .3s;
+		}
+	}
+}
+
+@keyframes showToast {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	
+    to {
+	    opacity: 1;
+	    transform: translateY(0);
+	}
+}
+
+@keyframes hideToast {
+    from {
+	    opacity: 1;
+	    transform: translateY(0);
+	}
+	to {
+	    opacity: 0;
+	    transform: translateY(100%);
+	}	
+}
