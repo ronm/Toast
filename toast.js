@@ -4,6 +4,8 @@
     } else if (typeof module === 'object' && module.exports) {
         module.exports = factory();
     } else {
+	    "function"!=typeof Object.assign&&(Object.assign=function(n,t){"use strict";if(null==n)throw new TypeError("Cannot convert undefined or null to object");for(var r=Object(n),e=1;e<arguments.length;e++){var o=arguments[e];if(null!=o)for(var a in o)Object.prototype.hasOwnProperty.call(o,a)&&(r[a]=o[a])}return r});
+
         root.Toast = factory();
   }
 }(this, function () {
@@ -11,52 +13,55 @@
 		ttl: 5000,
 		containerClass: "toast-container",
 		itemClass: "toast",
+		hideOnClick: true,
 	}
-	
+
 	class ToastMessage {
 		constructor(message, _parent) {		
 			this._parent = _parent;
-			this.html = document.createElement("div");
-			this.html.className = this._parent.settings.itemClass;
-			this.message = this.html.innerHTML = message;
+			this.node = document.createElement("div");
+			this.node.className = this._parent.settings.itemClass;
+			this.message = this.node.innerHTML = message;
 			this.timer = null;
-		}
-		
-		show() {
-			this._parent.html.appendChild(this.html);
-			this.html.addEventListener("click", () => this.hide());
 			
-			if ( this._parent.settings.ttl > -1 ) { 
+			if (this._parent.settings.hideOnClick) {
+				this.node.addEventListener("click", () => this.hide());
+			}
+		}
+
+		show() {
+			this._parent.node.appendChild(this.node);
+			
+			if ( this._parent.settings.ttl > 0 ) { 
 				this.timer = setTimeout(() => this.hide(), this._parent.settings.ttl);
 			}
-			
+
 			return this;
 		}
-		
+
 		hide(delay = 0) {
 			setTimeout(() => {
-				this.html.addEventListener("animationend", event => { 
+				this.node.addEventListener("animationend", event => { 
 					if ( event.animationName === "hideToast") {
-						this.html.parentNode.removeChild(this.html);
+						this.node.parentNode.removeChild(this.node);
 					}
 				});
-				this.html.classList.add("hide");
+				this.node.classList.add("hide");
 				this.timer = this.timer && clearTimeout(this.timer);
 			}, delay);
 		}
 	}
-	
+
 	return class Toast {
 		constructor(opts) {
 			this.settings = Object.assign({}, defaults, opts);
-			this.html = document.createElement("aside");
-			this.html.className = this.settings.containerClass;
-			document.body.appendChild(this.html);
+			this.node = document.createElement("aside");
+			this.node.className = this.settings.containerClass;
+			document.body.appendChild(this.node);
 		}
 		
 		create(message) {
 			return new ToastMessage(message, this);
 		}
-		
 	}
 }));

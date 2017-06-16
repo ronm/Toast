@@ -17,7 +17,11 @@
 	    cursor: pointer;
 	    float: right;
 	    opacity: 0;
-	    padding: 1rem;    
+	    padding: 1rem;   
+	    
+	    &:not(:first-child) {
+			margin-top: 1rem;
+		} 
 	
 		&.hide {
 			animation-name: hideToast;

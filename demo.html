@@ -34,6 +34,10 @@ article { margin: 0 auto; max-width: 1000px; padding: 2rem;}
     padding: 1rem;    
 }
 
+.toast-container .toast:not(:first-child) {
+	margin-top: 1rem;
+}
+
 .toast-container .toast.hide {
 	animation-name: hideToast;
 	animation-duration: .3s;	
@@ -73,11 +77,11 @@ article { margin: 0 auto; max-width: 1000px; padding: 2rem;}
 <script type="text/javascript">
 (function() {
 
-	var toast = new Toast();
+	var toast = new Toast({ttl: 0});
 
 	document.querySelector("#show-toast").addEventListener("click", function() {
 		toast.create('Hello World ' + window.performance.now()).show();
-	});	
+	});
 
 })();</script>
 </body>
