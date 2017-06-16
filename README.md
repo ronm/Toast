@@ -69,7 +69,39 @@ message.show();
 message.hide();
 ```
 
-### delay: 0 (optional parameter)
+
+Options
+-------
+
+Options are set when initializing the Toast object.
+
+```js
+var toast = new Toast({ttl: 10000});
+```
+
+
+### containerClass: "toast-container" (optional parameter)
+
+`string`
+
+If you wish to delay the hide animation
+
+
+### hideOnClick: true (optional parameter)
+
+`boolean`
+
+If you wish to delay the hide animation
+
+
+### itemClass: "toast" (optional parameter)
+
+`string`
+
+If you wish to delay the hide animation
+
+
+### ttl: 5000 (optional parameter)
 
 `number`
 

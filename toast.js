@@ -10,10 +10,10 @@
   }
 }(this, function () {
 	let defaults = {
-		ttl: 5000,
 		containerClass: "toast-container",
+		hideOnClick: true,	
 		itemClass: "toast",
-		hideOnClick: true,
+		ttl: 5000,
 	}
 
 	class ToastMessage {
