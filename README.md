@@ -7,7 +7,7 @@ Usage
 ------
 
 ```js
-import Waybetter from './toast'
+import Toast from './toast'
 ```
 
 or
