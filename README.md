@@ -39,14 +39,14 @@ document.querySelector("#show-toast").addEventListener("click", function() {
 Methods
 -------
 
-### create
+#### create
 
 ```js
 toast.create('Hello World');
 ```
 
 
-### show
+#### show
 
 ```js
 toast.create('Hello World').show();
@@ -60,7 +60,7 @@ message.show();
 ```
 
 
-### hide
+#### hide
 
 ```js
 var message = toast.create('Hello World').show();
@@ -75,34 +75,42 @@ Options
 
 Options are set when initializing the Toast object.
 
+
+#### containerClass: "toast-container" (optional parameter)
+
+`string`
+
+
 ```js
-var toast = new Toast({ttl: 10000});
+var toast = new Toast({containerClass: "toast-wrapper"});
 ```
 
 
-### containerClass: "toast-container" (optional parameter)
-
-`string`
-
-If you wish to delay the hide animation
-
-
-### hideOnClick: true (optional parameter)
+#### hideOnClick: true (optional parameter)
 
 `boolean`
 
-If you wish to delay the hide animation
+
+```js
+var toast = new Toast({hideOnClick: false});
+```
 
 
-### itemClass: "toast" (optional parameter)
+#### itemClass: "toast" (optional parameter)
 
 `string`
 
-If you wish to delay the hide animation
+
+```js
+var toast = new Toast({itemClass: "message"});
+```
 
 
-### ttl: 5000 (optional parameter)
+#### ttl: 5000 (optional parameter)
 
 `number`
 
-If you wish to delay the hide animation
+
+```js
+var toast = new Toast({ttl: 10000});
+```
